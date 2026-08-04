@@ -28,3 +28,5 @@ const hashValue = crypto.createHash('sha256')
 console.log(hashValue)
 const newValue = hashValue.update(word)
 console.log(newValue)
+const answer = newValue.digest('hex')
+console.log(answer) // returns the hash value of the word "Hello World" using sha256 algorithm
