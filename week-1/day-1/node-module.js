@@ -15,5 +15,16 @@
 
 // 3. path - address
 
-const path = require('path');
-console.log(path.resolve())
+// const path = require('path');
+// console.log(path.resolve())
+
+// 4. crypto - cryptography
+
+const crypto = require('crypto');
+console.log(crypto.randomUUID()); // returns a random UUID (Universally Unique Identifier)
+console.log(crypto.randomInt(9)); // returns a random integer between 1 and 100
+var word = "Hello World";
+const hashValue = crypto.createHash('sha256')
+console.log(hashValue)
+const newValue = hashValue.update(word)
+console.log(newValue)
