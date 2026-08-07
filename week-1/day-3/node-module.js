@@ -1,19 +1,19 @@
-const crypto = require('crypto');
+// const crypto = require('crypto');
 
 // step 1: 1 hash algorithm is selected (sha256, sha512, md5, etc.)
 
-const algo = crypto.createHash('shake256');
+// const algo = crypto.createHash('shake256');
 
-const data = algo.update('Hello World'); // step 2: data is passed to the hash algorithm
+// const data = algo.update('Hello World'); // step 2: data is passed to the hash algorithm
 
-const ans = data.digest('hex'); // step 3: the hash value is generated in hex format
+// const ans = data.digest('hex'); // step 3: the hash value is generated in hex format
 
-console.log(ans); // returns the hash value of the word "Hello World" using shake256 algorithm
+// console.log(ans); // returns the hash value of the word "Hello World" using shake256 algorithm
 
 
 // 5. fs - file system
 
-const fs = require('fs');
+// const fs = require('fs');
 
 
 // a. read file
@@ -83,12 +83,21 @@ const fs = require('fs');
 
 // e. delete file
 
-fs.unlink('./2.txt', (err)=>{
-    if (err) {
-        console.log(err)
-    } else {
-        console.log("deleted file")
-    }
-})
+// fs.unlink('./2.txt', (err)=>{
+//     if (err) {
+//         console.log(err)
+//     } else {
+//         console.log("deleted file")
+//     }
+// })
 
-fs.unlinkSync('./2.txt')
+// fs.unlinkSync('./2.txt')
+
+
+// 5. Process inbuilt module
+
+const process = require('process')  
+
+console.log(process.argv) // Cause of process.argv only we can take inputs from users through console or else javascript does not take inputs from user directly
+
+
