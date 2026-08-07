@@ -96,8 +96,27 @@
 
 // 5. Process inbuilt module
 
-const process = require('process')  
+// const process = require('process')  
 
-console.log(process.argv) // Cause of process.argv only we can take inputs from users through console or else javascript does not take inputs from user directly
+// console.log(process.argv) // Cause of process.argv only we can take inputs from users through console or else javascript does not take inputs from user directly
 
 
+// 6. https - hyper text transfer protocol secure => it is used to build connection between client and server in a secure way
+
+const http = require('http');
+
+const server = http.createServer((req,res)=> {
+    if (req.url === '/') {
+        res.end('Hello World');
+    } else if (req.url == '/about') {
+        res.end('About Page');
+    } else if (req.url == '/login') {
+        res.end('Login Page');
+    } else {
+        res.end('404 Page Not Found');
+    }
+})
+
+server.listen(8080, ()=> {
+    console.log('Server is running on port 8080');
+})
