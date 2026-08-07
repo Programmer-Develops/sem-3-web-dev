@@ -68,14 +68,27 @@ const fs = require('fs');
 
 // d. rename file
 
-fs.rename('./1.txt','./newfile.txt', (err)=>{
-    if (err) {
-        console.log(err)
-    } else {
-        console.log('file renamed successfully');
-    }
-})
+// fs.rename('./1.txt','./newfile.txt', (err)=>{
+//     if (err) {
+//         console.log(err)
+//     } else {
+//         console.log('file renamed successfully');
+//     }
+// })
 
 // synchronous
 
-fs.renameSync('./1.txt', './newfile.txt')
+// fs.renameSync('./1.txt', './newfile.txt')
+
+
+// e. delete file
+
+fs.unlink('./2.txt', (err)=>{
+    if (err) {
+        console.log(err)
+    } else {
+        console.log("deleted file")
+    }
+})
+
+fs.unlinkSync('./2.txt')
