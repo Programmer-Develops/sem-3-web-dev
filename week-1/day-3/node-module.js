@@ -52,15 +52,30 @@ const fs = require('fs');
 // c. append file
 
 // asynchronous way of appending file
-fs.appendFile('./1.txt', 'Are you there ?', (err)=> {
-    if (err) {
-        console.log('error in appending file');
-    }
-    else {
-        console.log('file appended successfully');
-    }
-})
+// fs.appendFile('./1.txt', 'Are you there ?', (err)=> {
+//     if (err) {
+//         console.log('error in appending file');
+//     }
+//     else {
+//         console.log('file appended successfully');
+//     }
+// })
 
 // synchronous way of appending file
 
-fs.appendFileSync('./1.txt', 'Are you there ?'); // It is synchronous as it does not use callback function and the code execution is blocked until the file is appended.
+// fs.appendFileSync('./1.txt', 'Are you there ?'); // It is synchronous as it does not use callback function and the code execution is blocked until the file is appended.
+
+
+// d. rename file
+
+fs.rename('./1.txt','./newfile.txt', (err)=>{
+    if (err) {
+        console.log(err)
+    } else {
+        console.log('file renamed successfully');
+    }
+})
+
+// synchronous
+
+fs.renameSync('./1.txt', './newfile.txt')
