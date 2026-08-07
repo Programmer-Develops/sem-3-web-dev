@@ -25,3 +25,8 @@ fs.readFile("./1.txt", 'utf-8', (err, data) => {  // It is asynchronous as it us
         console.log(data);
     }
 })
+
+// synchronous way of reading file
+
+const syncData = fs.readFileSync("./1.txt", 'utf-8'); // It is synchronous as it does not use callback function and the code execution is blocked until the file is read.
+console.log(syncData);
