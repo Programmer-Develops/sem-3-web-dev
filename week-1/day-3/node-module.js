@@ -103,20 +103,20 @@
 
 // 6. https - hyper text transfer protocol secure => it is used to build connection between client and server in a secure way
 
-const http = require('http');
+// const http = require('http');
 
-const server = http.createServer((req,res)=> {
-    if (req.url === '/') {
-        res.end('Hello World');
-    } else if (req.url == '/about') {
-        res.end('About Page');
-    } else if (req.url == '/login') {
-        res.end('Login Page');
-    } else {
-        res.end('404 Page Not Found');
-    }
-})
+// const server = http.createServer((req,res)=> {
+//     if (req.url === '/') {
+//         res.end('Hello World');
+//     } else if (req.url == '/about') {
+//         res.end('About Page');
+//     } else if (req.url == '/login') {
+//         res.end('Login Page');
+//     } else {
+//         res.end('404 Page Not Found');
+//     }
+// })
 
-server.listen(8080, ()=> {
-    console.log('Server is running on port 8080');
-})
+// server.listen(8080, ()=> {
+//     console.log('Server is running on port 8080');
+// })
