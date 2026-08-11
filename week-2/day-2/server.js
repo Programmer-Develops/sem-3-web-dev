@@ -13,8 +13,10 @@ const server = http.createServer((req, res) => {
     if (req.url == '/') {
         res.end("Home Page");
     } else if (req.url == '/read' && req.method == 'GET') {
-        data = fs.readFileSync('./test.json', 'utf-8');
-        res.end(data);
+        // data = fs.readFileSync('./test.json', 'utf-8');
+        // res.end(data);
+        const data = fs.createReadStream('./test.json', 'utf-8')
+        data.pipe(res) // we used pipe as data was in chunks and we wanted to send it to the response stream
     } else if (req.url == '/add') {
         res.end("data created successfully");
     } else {
