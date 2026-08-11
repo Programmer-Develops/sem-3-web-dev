@@ -1,0 +1,6 @@
+{
+"name": "Alice",
+"age": 30,
+"isAdmin": false,
+"skills": ["Python", "JavaScript", "SQL"]
+}
