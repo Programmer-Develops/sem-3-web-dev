@@ -12,8 +12,20 @@
 
 
 // internal module
-function greet() {
-    console.log("Hello World!")
-}
+// function greet() {
+//     console.log("Hello World!")
+// }
 
-module.exports = greet;
+// module.exports = greet;
+
+
+// using .env
+// step -1 install npm i dotenv
+// step -2 import
+require('dotenv').config()
+
+// step -3 use case
+console.log(process.env.key)
+console.log(process.env.pass)
+
+// console.log(key)
