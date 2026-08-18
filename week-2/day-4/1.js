@@ -20,7 +20,7 @@
 
 
 // using .env
-// step -1 install npm i dotenv
+// step -1 install npm i dotenv 
 // step -2 import
 require('dotenv').config()
 
