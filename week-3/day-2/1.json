@@ -12,6 +12,20 @@
             "id":3,
             "name":"CD"
         }
+    ],
+    "trainer": [
+        {
+            "id": 1,
+            "name": "vivek"
+        },
+        {
+            "id": 2,
+            "name": "sahil"
+        },
+        {
+            "id": 3,
+            "name": "akhil"
+        }
     ]
     
 }
