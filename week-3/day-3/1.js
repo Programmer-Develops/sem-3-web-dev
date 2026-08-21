@@ -73,6 +73,35 @@ app.put("update/:id", (req,res) => {
     fs.writeFileSync('./1.json', JSON.stringyfy(data))
     res.send({msg:"student record updated"})
 }) 
+
+// patch would allow us to partially update without need of writing whole object happened in put
+app.patch("update/:id", (req,res) => {
+    const payload = req.body
+    console.log(payload)
+
+    const id = req.params;
+    console.log(id)
+
+    const data = JSON.parse(fs.readFileSync('./1.json', 'utf-8'));
+
+    const stdata = data.student;
+    console.log(stdata)
+
+    const updatedData = stdata.map((el)=> {
+        if (el.id == req.params.id) {
+            return {...el, ...payload} // ... before el and payload will allow us to directly access the inside elements
+        } else {
+            return el
+        }
+    })
+
+    console.log(updatedData)
+
+    data.student = updatedData
+    fs.writeFileSync('./1.json', JSON.stringyfy(data))
+    res.send({msg:"student record updated"})
+}) 
+
 app.listen(8080,()=>{
     console.log("Server Started")
 })
