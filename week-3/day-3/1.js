@@ -94,7 +94,26 @@ app.patch("update/:id", (req,res) => {
             return el
         }
     })
+    console.log(updatedData)
 
+    data.student = updatedData
+    fs.writeFileSync('./1.json', JSON.stringyfy(data))
+    res.send({msg:"student record updated"})
+}) 
+
+app.patch("update/:id", (req,res) => {
+    const payload = req.body
+    console.log(payload)
+
+    const id = req.params;
+    console.log(id)
+
+    const data = JSON.parse(fs.readFileSync('./1.json', 'utf-8'));
+
+    const stdata = data.student;
+    console.log(stdata)
+
+    const updatedData = stdata.filter((el) => el.id != req.params.id)
     console.log(updatedData)
 
     data.student = updatedData
