@@ -1,0 +1,14 @@
+{
+  "name": "assignment-1-smart-utility-toolkit",
+  "version": "1.0.0",
+  "description": "Node.js core-module utilities for Lab Assignment 1",
+  "main": "app.js",
+  "scripts": {
+    "test": "node --check app.js && node --check calculator.js && node --check dice.js && node --check fileManager.js && node --check server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
+
