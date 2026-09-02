@@ -1,0 +1,4 @@
+Route is /read and method is GET 
+Route is / and method is GET 
+Route is /read and method is GET 
+Route is /favicon.ico and method is GET 
