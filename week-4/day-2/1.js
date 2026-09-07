@@ -16,7 +16,7 @@ const express = require('express')
 const fs = require('fs')
 const app = express()
 
-// TimeLogger Middleware
+// TimeLogger Middleware : It will log the time taken by each route to execute
 const timeLoggerMiddleware = (req,res,next)=> {
     const startTime = Date.now();
     next()
@@ -26,7 +26,7 @@ const timeLoggerMiddleware = (req,res,next)=> {
 
 app.use(timeLoggerMiddleware)
 
-// RouteLogger Middleware
+// RouteLogger Middleware : It will log the route and method of each request to a file
 const routeLoggerMiddleware = (req,res,next) => {
     console.log(`Route is ${req.url} and method is ${req.method}`)
     const record = `Route is ${req.url} and method is ${req.method} \n`
@@ -36,7 +36,7 @@ const routeLoggerMiddleware = (req,res,next) => {
 
 app.use(routeLoggerMiddleware)
 
-// watchman Middleware
+// watchman Middleware : It will restrict access to the /admin route                                  
 const watchManMiddleware = (req,res,next) => {
     if (req.url == '/admin') {
         res.send({msg:"Not allowed to access this route"})
