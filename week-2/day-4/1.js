@@ -1,3 +1,4 @@
+// Modules are reusable pieces of code that can be imported and used in other parts of your application. They help in organizing code, promoting reusability, and maintaining a clean codebase. In Node.js, modules can be created using the CommonJS module system or the ES6 module system.
 // 3 types of modules are there : 
 //      - core module 
 //      - internal module
