@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <div id="data"></div>
+</body>
+</html>
+
+<script>
+    const main = async() => {
+        try {
+            const response = await fetch("http://localhost:8080/student/read")
+            console.log(response) // res => readable stream
+
+            const data = await response.text() 
+            document.getElementById("data").innerText = data
+        }
+        catch(err) {
+            console.log(err)
+        }
+    }
+</script>
