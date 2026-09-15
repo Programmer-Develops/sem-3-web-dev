@@ -1,6 +1,6 @@
 const express = require('express')
 const fs = require('fs')
-const cors = require('cors')
+const cors = require('cors') // cors full form is Cross-Origin Resource Sharing
 const {studentRouter} = require('./routes/student.route')
 const {trainerRouter} = require('./routes/trainer.route')
 

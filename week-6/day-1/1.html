@@ -14,10 +14,10 @@
 <script>
     const main = async() => {
         try {
-            const response = await fetch("http://localhost:8080/student/read")
+            const response = await fetch("http://localhost:8080/student/read") // here we are using await because fetch is an asynchronous function and it returns a promise. So we have to wait for the promise to be resolved before we can use the response.
             console.log(response) // res => readable stream
 
-            const data = await response.text() 
+            const data = await response.text() // we use await two times because first we have to wait for the response and then we have to wait for the data to be converted into text
             document.getElementById("data").innerText = data
         }
         catch(err) {
