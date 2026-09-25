@@ -42,7 +42,7 @@ stored in document format
 - db.collectionName.find() -> return all document in collection
 - db.collectionName.findOne() -> return 1st match document in collection
 - db.collectionName.find({}) -> return all match document as per query from collection
-- db.collectionName.updateOne({query},{$set:{}}) -> update 1 document in collection
+- db.collectionName.updateOne({query},{$set:{}}) -> update 1 document in collect+ion
 - db.collectionName.updateOne({query},{$set:{}}) -> update all document in collection
 - db.collectionName.deleteOne({query}) -> delete 1 document in collection
 - db.collectionName.deleteMany({query}) -> delete all document in collection

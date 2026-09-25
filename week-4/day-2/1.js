@@ -10,7 +10,7 @@
 //          Watchman
 
 // 3) External / Third Party 
-//      Ex. Mutter, CORS
+//      Ex. Multer, CORS
 
 const express = require('express')
 const fs = require('fs')
