@@ -11,6 +11,7 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "events": "^3.3.0"
+    "events": "^3.3.0",
+    "ws": "^8.23.0"
   }
 }
