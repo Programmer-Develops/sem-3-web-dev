@@ -12,3 +12,9 @@ In Simple terms, WebSocket enables a persistent connection between the client an
 
 # What is EventEmitter ?
 - EventEmitter is a core module in Node.js that allows objects to emit events and register listeners for those events. It provides a way to handle asynchronous events and is commonly used in server-side applications to manage events such as incoming requests, data processing, and other asynchronous operations.
+
+# What is Socket io ? How does it work ?
+- Socket.IO is a JavaScript library that enables real-time, bidirectional communication between web clients
+- it differs from web sockets in that it provides additional features such as automatic reconnection, broadcasting, and rooms. Socket.IO works by establishing a WebSocket connection between the client and server, allowing them to exchange messages in real-time. It also provides a fallback mechanism to use other transport protocols (like long polling) if WebSockets are not supported by the client or server.
+
+brief definition: Socket.IO is a library that facilitates real-time, bidirectional communication between web clients and servers, offering features beyond standard WebSockets.
