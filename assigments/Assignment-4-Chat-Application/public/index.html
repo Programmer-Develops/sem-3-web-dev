@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#11131a">
+  <meta name="description" content="A cozy real-time chat for your favorite conversations.">
+  <title>Gather — Real-time chat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/socket.io/socket.io.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/" aria-label="Gather home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32"><path d="M7.5 9.5h17a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-8l-6 4v-4h-3a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3Z"/><circle cx="11" cy="16.5" r="1.25"/><circle cx="16" cy="16.5" r="1.25"/><circle cx="21" cy="16.5" r="1.25"/></svg>
+        </span>
+        <span class="brand-name">gather<span>.</span></span>
+      </a>
+
+      <div class="workspace-label">YOUR WORKSPACE</div>
+      <div class="workspace-card">
+        <span class="workspace-icon">G</span>
+        <span class="workspace-copy"><strong>Good company</strong><small>Free workspace</small></span>
+        <span class="workspace-menu" aria-hidden="true">···</span>
+      </div>
+
+      <div class="section-heading">
+        <span>CHANNELS</span>
+        <span class="section-count">03</span>
+      </div>
+      <nav class="channel-list" aria-label="Chat channels">
+        <button class="channel active" type="button" data-room="general">
+          <span class="hash">#</span><span>general</span><span class="channel-dot"></span>
+        </button>
+        <button class="channel" type="button" data-room="random">
+          <span class="hash">#</span><span>random</span>
+        </button>
+        <button class="channel" type="button" data-room="tech">
+          <span class="hash">#</span><span>tech</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="sidebar-tip">
+          <span class="tip-sparkle" aria-hidden="true">✦</span>
+          <p>Good conversations<br>start with <strong>hello.</strong></p>
+        </div>
+        <div class="profile">
+          <span class="avatar avatar-self" id="profile-avatar">?</span>
+          <span class="profile-copy"><strong id="profile-name">Your profile</strong><small><span class="online-dot"></span> Online</small></span>
+          <span class="profile-menu" aria-hidden="true">···</span>
+        </div>
+      </div>
+    </aside>
+
+    <section class="chat-panel" aria-label="Chat">
+      <header class="chat-header">
+        <div class="channel-heading">
+          <span class="heading-hash">#</span>
+          <div><h1 id="room-title">general</h1><p id="room-description">The place for everything and everyone.</p></div>
+        </div>
+        <div class="header-actions">
+          <div class="online-summary"><span class="online-dot"></span><span id="online-count">0 online</span></div>
+          <button class="icon-button mobile-members-toggle" id="members-toggle" type="button" aria-label="Show members">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2m6-10a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm6-3a4 4 0 0 1 0 8m2 2h2a2 2 0 0 1 2 2v1"/></svg>
+          </button>
+          <button class="icon-button" id="profile-edit" type="button" aria-label="Change your name" title="Change your name">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="welcome-banner" id="welcome-banner">
+        <div class="welcome-icon" aria-hidden="true">✦</div>
+        <div><strong>Welcome to #<span id="welcome-room">general</span></strong><p>This is the beginning of something good. Say hello!</p></div>
+        <button class="banner-close" id="banner-close" type="button" aria-label="Dismiss welcome message">×</button>
+      </div>
+
+      <div class="message-list" id="message-list" role="log" aria-live="polite" aria-relevant="additions">
+        <div class="empty-state" id="empty-state">
+          <span class="empty-emoji" aria-hidden="true">👋</span>
+          <strong>Make yourself at home</strong>
+          <span>Your messages will show up here.</span>
+        </div>
+      </div>
+
+      <div class="typing-row" id="typing-row" aria-live="polite"></div>
+      <form class="composer" id="message-form">
+        <button class="composer-add" type="button" id="focus-message" aria-label="Focus message box">+</button>
+        <label class="sr-only" for="message-input">Write a message</label>
+        <input id="message-input" type="text" maxlength="1000" placeholder="Message #general" autocomplete="off" disabled>
+        <span class="composer-hint">Enter to send</span>
+        <button class="send-button" id="send-button" type="submit" aria-label="Send message" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+        </button>
+      </form>
+      <div class="connection-note" id="connection-note"><span class="connection-dot"></span><span>Connecting to Gather…</span></div>
+    </section>
+
+    <aside class="members-panel" id="members-panel" aria-label="Online members">
+      <div class="members-heading"><h2>In this room</h2><span id="members-count">0</span></div>
+      <div class="members-subheading"><span class="online-dot"></span> ONLINE — <span id="members-online-count">0</span></div>
+      <ul class="member-list" id="member-list"></ul>
+      <div class="members-footer"><span class="footer-lock" aria-hidden="true">✦</span><span>Here for the good chats</span></div>
+    </aside>
+  </main>
+
+  <dialog class="name-dialog" id="name-dialog" aria-labelledby="dialog-title">
+    <form class="name-card" id="name-form" method="dialog">
+      <div class="dialog-mark" aria-hidden="true">✦</div>
+      <p class="eyebrow">WELCOME TO GATHER</p>
+      <h2 id="dialog-title">Come on in.</h2>
+      <p class="dialog-copy">Pick a name so everyone knows it's you.</p>
+      <label for="name-input">Your name</label>
+      <input id="name-input" type="text" maxlength="24" autocomplete="nickname" placeholder="e.g. Alex" required>
+      <p class="form-error" id="name-error" role="alert"></p>
+      <button class="join-button" type="submit">Join the conversation <span aria-hidden="true">→</span></button>
+      <p class="privacy-note">No accounts, no fuss. Your name is saved on this device.</p>
+    </form>
+  </dialog>
+</body>
+</html>
